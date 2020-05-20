@@ -11,7 +11,7 @@ Data and model related to coronaviruses inactivation
 This repository aims at providing data and models relative to virus from Coronaviridae family. 
 This project is constituted of three main parts: (i) the collection of coronavirus kinetics from publications
 
-![](workflow2.tif?raw=true "Data and modelling workflow")
+![](/workflow2.tif?raw=true "Data and modelling workflow")
 
 ## Collecting the kinetics
 
