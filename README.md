@@ -9,7 +9,8 @@ Data and model related to coronaviruses inactivation
 ## Introduction
 
 This repository aims at providing data and models relative to virus from Coronaviridae family. 
-This project is constituted of three main parts. The first part focus on the collection of raw kinetics values of coronaviruses
+This project is constituted of three main parts. The first part focus on the collection of raw kinetics values of coronaviruses. The digitize_FigsTabs.r script helps to collect the kinetics from images (stored in Data/figures).
+
 
 
 ## Collecting the kinetics
