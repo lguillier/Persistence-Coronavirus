@@ -4,11 +4,13 @@ Data and models related to coronaviruses inactivation
   * [Introduction](#introduction)
   * [Collecting the kinetics](#collecting)
   * [Retrieving log10 D values from kinetics](#retrieve)
+  * [Model selection](#selection)
+  * [Citation](#citation)
   * [Licence](#licence)
   
 ## Introduction
 
-This repository aims at providing data and models relative to virus from Coronaviridae family. 
+This repository aims at providing data and models relative to loss of infectivity of Coronaviridae family accoring to temperature and relative humidity. 
 This project is constituted of three main parts: (i) the collection of coronavirus kinetics from publications, (ii) the estimation of D-values (time needed for a decimal reduction of virus nfectivity) and (iii) the selection of the most appropriate model.
 
 ![Screenshot](workflow2.tif)
