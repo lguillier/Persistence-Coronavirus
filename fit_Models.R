@@ -119,7 +119,7 @@ fig2b+theme_bw(base_size=15)+theme(axis.text=element_text(size=12))+xlab("Temper
 
 # 3.2 Bootstrap with nlsMicrobio package
 fitmodel2.boot<-nlsBoot(fitmodel2,niter=nboot)
-
+#write.csv(fitmodel2.boot$coefboot,file = "Output/model2_params.csv")
 plot(fitmodel2.boot)
 plot(fitmodel2.boot, type = "boxplot", ask = FALSE)
 summary(fitmodel2.boot)
@@ -287,8 +287,26 @@ data_plot<-read.csv("Data/rgl_coronavirus.csv",header=TRUE,sep=";")
 
 log10D<-coronavirus_model4(data_plot$T,data_plot$HR,4,coef(fitmodel4)[1],coef(fitmodel4)[2],coef(fitmodel4)[3])
 
+x.v<-seq(4,66,2)
+y.v<-seq(0,100,10)
+y.v<-c(y.v,95)
+
 # rgl plot
 plot3d(x=data_plot$T,y=data_plot$HR,z=log10D,xlab='',ylab='',zlab ='')
+for (i in (1:length(x.v)))
+{grid.lines = 100
+x.pred <- rep(x.v[i], grid.lines)
+y.pred <- seq(0,100, length.out = grid.lines)
+z.pred <- coronavirus_model4(x.pred,y.pred,4,coef(fitmodel4)[1],coef(fitmodel4)[2],coef(fitmodel4)[3])
+lines3d(x=x.pred,y=y.pred,z=z.pred)
+}
+for (i in (1:length(y.v)))
+{grid.lines = 100
+y.pred <- rep(y.v[i], grid.lines)
+x.pred <- seq(4,66, length.out = grid.lines)
+z.pred <- coronavirus_model4(x.pred,y.pred,4,coef(fitmodel4)[1],coef(fitmodel4)[2],coef(fitmodel4)[3])
+lines3d(x=x.pred,y=y.pred,z=z.pred)
+}
 points3d(x=data$Temperature,y=data$HR,z=data$log10D,size = 10, color = "grey")
 mtext3d('Temperature (C)', "x++", las=2,line = 3) 
 mtext3d("log10(D) (D in hours)", "z++", line = 3)
@@ -302,6 +320,7 @@ scatter3D(x=data_plot$T,y=data_plot$HR,z=log10D,bty = "b2", colvar = NULL, col =
 scatter3D(x=data$Temperature,y=data$HR,z=data$log10D,add=TRUE,colvar = NULL, col = "blue",
           pch = 19, cex = 1.0)
 
+
 # Figure 3B
 log10Dpred<-coronavirus_model4(data$Temperature,data$HR,4,coef(fitmodel4)[1],coef(fitmodel4)[2],coef(fitmodel4)[3])
 data2<-data
@@ -311,12 +330,29 @@ data2$pred<-log10Dpred
 fig3B<-ggplot(data2, aes(x=pred, y=log10D, color=Virus,shape=Fomites)) + geom_point(size = 3)+
   geom_abline(intercept = 0, slope = 1, col="black", linetype="dashed", size=1.5)
 fig3B+theme_few() + scale_colour_few()+xlim(-3,3)+ylim(-3,3)
- figure3B<-fig3B+theme_bw(base_size=15)+theme(axis.text=element_text(size=12))+xlab(bquote(~log[10]~'(D) - Predicted')) + ylab(bquote(~log[10]~'(D) - Observed'))
+ figure3B<-fig3C+theme_bw(base_size=15)+theme(axis.text=element_text(size=12))+xlab(bquote(~log[10]~'(D) - Predicted')) + ylab(bquote(~log[10]~'(D) - Observed'))+annotate(x=-2,y=2.5,geom="text",label="B",fontface=2,size=10)
 
  tiff(file="Output/Figure3B.tiff",width = 7, height = 4, units = 'in',res=300)
  figure3B
  dev.off()
 
+ 
+ #Figure 3C (not shown finally)
+ log10Dpred<-coronavirus_model2(data$Temperature,4,coef(fitmodel2)[1],coef(fitmodel2)[2])
+ data2<-data
+ data2$pred<-log10Dpred
+ 
+ 
+ fig3C<-ggplot(data2, aes(x=pred, y=log10D, color=Virus,shape=Fomites)) + geom_point(size = 3)+
+   geom_abline(intercept = 0, slope = 1, col="black", linetype="dashed", size=1.5)
+ fig3C+theme_few() + scale_colour_few()+xlim(-3,3)+ylim(-3,3)
+ figure3C<-fig3C+theme_bw(base_size=15)+theme(axis.text=element_text(size=12))+xlab(bquote(~log[10]~'(D) - Predicted')) + ylab(bquote(~log[10]~'(D) - Observed'))
+ 
+ tiff(file="Output/Figure3C.tiff",width = 7, height = 4, units = 'in',res=300)
+ figure3C
+ dev.off()
+ 
+ 
 ###### 9. Contour plot
 
 ####### 9.1 Whole range  
@@ -365,8 +401,8 @@ log10D_4<-  coronavirus_model4(data.fit2$Temperature,data.fit2$RH,4,coef(fitmode
 data_contour_4<-data.frame(Temperature=data.fit2$Temperature,RH=data.fit2$RH,log10D=log10D_4)
 plot5 <- ggplot()  +
   theme_bw() +
-  xlab("Temperature") +
-  ylab("RH") +
+  xlab("Temperature (°C)") +
+  ylab("RH (%)") +
   stat_contour(data = data_contour_4, aes(x = Temperature, y = RH, z = log10D, colour = ..level..),
                breaks = seq(-0.5,2.3,0.2), size = 1) +
   scale_color_continuous(name = "log10(D)") +ylim(0,95)+
@@ -389,8 +425,8 @@ log10D_2<-  coronavirus_model2(data.fit2$Temperature,4,coef(fitmodel2)[1],coef(f
 data_contour_2<-data.frame(Temperature=data.fit2$Temperature,RH=data.fit2$RH,log10D=log10D_2)
 plot8 <- ggplot()  +
   theme_bw() +
-  xlab("Temperature") +
-  ylab("RH") +
+  xlab("Temperature (°C)") +
+  ylab("RH (%)") +
   stat_contour(data = data_contour_2, aes(x = Temperature, y = RH, z = log10D, colour = ..level..),
                breaks = seq(-0.5,2.3,0.2), size = 1) +
   scale_color_continuous(name = "log10(D)") +ylim(0,95)+
@@ -417,6 +453,6 @@ data_resid<-data.frame(obs=obs,resids=resids,models=models)
 figSM2<-ggplot(data_resid, aes(x=obs, y=resids,color=models)) + geom_point(size = 3)+
   geom_abline(intercept = 0, slope = 0, col="black", linetype="dashed", size=1.5)
 figSM2+theme_few()
-figSM2<-figSM2+theme_bw(base_size=15)+theme(axis.text=element_text(size=12))+xlab(bquote(~log[10]~'(D) - Observed')) + ylab('Model residuals')
+figSM2<-figSM2+theme_bw(base_size=15)+theme(axis.text=element_text(size=12))+xlab(bquote(~log[10]~'(D) - Observed (D in h)')) + ylab('Model residuals')
 
 figSM2
