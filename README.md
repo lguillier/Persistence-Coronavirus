@@ -14,7 +14,7 @@ This repository aims at providing data and models relative to loss of infectivit
 This project is constituted of three main parts: (i) the collection of coronavirus kinetics from publications, (ii) the estimation of D-values (time needed for a decimal reduction of virus nfectivity) and (iii) the selection of the most appropriate model.
 
 <p align="center">
-<img src='workflow2.tif' width="500"/>
+<img src='workflow2.tif' width=500/>
 </p>
 
 ## Collecting the kinetics
