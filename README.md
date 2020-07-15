@@ -32,7 +32,7 @@ The estimated values were associated with metadata of kinetics (coronavirus type
 ## Model selection
 
 The third part corresponds to model selection. Five diffrent models describing the effect of temperature and relative humidity were tested (see ~/R/ folder). 
-The fitModels.r script import DataDvalues.csv and generates various outputs usefull for model selection. It also export a file of uncertainty of parameters for the best model. These parameters were used to prepare the a spreadsheet that can pe used to predict model virus inactivation for a given duration at a given temperature and relative humidity. 
+The fitModels.r script import DataDvalues.csv and generates various outputs usefull for model selection. It also export a file of uncertainty of parameters for the best model. These parameters were used to prepare the a spreadsheet that can be used to predict model virus inactivation for a given duration at a given temperature and relative humidity or simply according to temperature. Users can also estimate the time necessary to reach a target log reduction for a given temperature (and relative humidity).  
 
 ## Citation
 
