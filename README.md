@@ -39,7 +39,6 @@ The fitModels.r script import DataDvalues.csv and generates various outputs usef
 
 ## Citation
 
-[L. Guillier. Data and models related to coronaviruses inactivation. https://github.com/lguillier/Persistence-Coronavirus](https://github.com/lguillier/Persistence-Coronavirus)
-
+[L. Guillier. Data and models related to coronaviruses inactivation. https://github.com/lguillier/Persistence-Coronavirus. https://doi.org/10.5281/zenodo.3946716](https://doi.org/10.5281/zenodo.3946716)	
 ## Licence
 This project is licensed under the terms of the GPLv3 license.
