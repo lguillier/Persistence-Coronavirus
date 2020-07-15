@@ -1,5 +1,8 @@
 Data and models related to coronaviruses inactivation 
 ========
+
+[![DOI](https://zenodo.org/badge/265592462.svg)](https://zenodo.org/badge/latestdoi/265592462)
+
 ## Contents
   * [Introduction](#introduction)
   * [Collecting the kinetics](#collecting)
