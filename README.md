@@ -41,7 +41,7 @@ The fitModels.r script import DataDvalues.csv and generates various outputs usef
 
 [L. Guillier. Data and models related to coronaviruses inactivation. https://github.com/lguillier/Persistence-Coronavirus. https://doi.org/10.5281/zenodo.3946716](https://doi.org/10.5281/zenodo.3946716)	
 
-[Guillier, L., Martin-Latil, S., Chaix, E., Thébault, A., Pavio, N., Le Poder, S., Batéjat, C., Biot, F., Koch, L., Schaffner, D., Sanaa, M., 2020. Modelling the inactivation of viruses from the &lt;em&gt;Coronaviridae&lt;/em&gt; family in response to temperature and relative humidity in suspensions or surfaces. Applied and Environmental Microbiology, AEM.01244-01220](https://aem.asm.org/content/early/2020/07/13/AEM.01244-20.abstract)
+[Guillier, L., Martin-Latil, S., Chaix, E., Thébault, A., Pavio, N., Le Poder, S., Batéjat, C., Biot, F., Koch, L., Schaffner, D., Sanaa, M., 2020. Modelling the inactivation of viruses from the Coronaviridae family in response to temperature and relative humidity in suspensions or surfaces. Applied and Environmental Microbiology, AEM.01244-01220](https://aem.asm.org/content/early/2020/07/13/AEM.01244-20.abstract)
 
 ## Licence
 This project is licensed under the terms of the BSD-3-Clause License.
